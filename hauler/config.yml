@@ -1,0 +1,12 @@
+version: 0.1
+storage:
+  filesystem:
+    rootdirectory: /shares/hauler/rancher/registry
+http:
+  addr: :5000
+  headers:
+    X-Content-Type-Options: [nosniff]
+  host: https://hauler.bomar.bme.lab:5000
+  tls:
+    certificate: /shares/hauler/certs/hauler.crt
+    key: /shares/hauler/certs/hauler.key

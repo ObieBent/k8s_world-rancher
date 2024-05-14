@@ -1,0 +1,23 @@
+[Service]
+Type=simple
+TimeoutStartSec=5m
+ExecStartPre=-/usr/bin/podman rm "minio"
+
+ExecStart=/usr/bin/podman run --name minio \
+                              -p 9000:9000 \
+                              -p 9001:9001 \
+                              -v /shares/minio/data:/data:z \
+                              -v /shares/minio/certs:/certs:z \
+                              -e "MINIO_ROOT_USER=minio" \
+                              -e "MINIO_ROOT_PASSWORD=Pa22word" \
+                              quay.io/minio/minio server /data --console-address ":9001" -S /certs
+
+
+ExecReload=-/usr/bin/podman stop "minio"
+ExecReload=-/usr/bin/podman rm "minio"
+ExecStop=-/usr/bin/podman stop "minio"
+Restart=always
+RestartSec=30
+
+[Install]
+WantedBy=multi-user.target

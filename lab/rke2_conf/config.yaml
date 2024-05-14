@@ -1,0 +1,16 @@
+system-default-registry: ${registry}
+server: https://cluster.bomar.bme.lab:9345
+token: MyT3stingClu5ster
+tls-san: 
+  - cluster.bomar.bme.lab
+cni: cilium
+disable-kube-proxy: true
+disable-cloud-controller: true
+cluster-cidr: "10.42.0.0/16"
+service-cidr: "10.43.0.0/16"
+profile: cis
+debug: false
+selinux: true
+pod-security-admission-config-file: /etc/rancher/rke2/rke2-had-psa.yaml
+protect-kernel-defaults: true
+write-kubeconfig-mode: "0600"

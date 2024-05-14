@@ -1,0 +1,17 @@
+apiVersion: resources.cattle.io/v1
+kind: Restore
+metadata:
+  name: restore-s3-node0
+spec:
+  backupFilename: node0-encrypted-6a9bf4e3-4073-4da8-8e80-614e8953a614-2024-04-10T11-49-23Z.tar.gz.enc
+  storageLocation:
+    s3:
+      credentialSecretName: minio-creds
+      credentialSecretNamespace: default
+      bucketName: rancher
+      region: eu-west-hetzner
+      endpoint: minio.192.168.110.201.nip.io:9000
+      endpointCA: ""
+      folder: ""
+      insecureTLSSkipVerify: true
+  encryptionConfigSecretName: encryptionconfig

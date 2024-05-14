@@ -1,0 +1,14 @@
+image: 
+  repository: registry.bomar.bme.lab:5000/quay.io/jetstack/cert-manager-controller
+webhook:
+  image:
+    repository: registry.bomar.bme.lab:5000/quay.io/jetstack/cert-manager-webhook
+cainjector:
+  image:
+    repository: registry.bomar.bme.lab:5000/quay.io/jetstack/cert-manager-cainjector
+startupapickeck: 
+  image:
+    repository: registry.bomar.bme.lab:5000/quay.io/jetstack/cert-manager-startupapicheck
+global:
+  imagePullSecrets: 
+    - name: "regcred"

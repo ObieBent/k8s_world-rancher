@@ -1,0 +1,30 @@
+---
+apiVersion: helm.cattle.io/v1
+kind: HelmChartConfig
+metadata:
+  name: rke2-cilium
+  namespace: kube-system
+spec:
+  valuesContent: |-
+    bpf: 
+      masquerade: true
+      hostLegacyRouting: false
+    nodePort: 
+      enabled: true
+    kubeProxyReplacement: true
+    hubble: 
+      enabled: true
+      relay: 
+        enabled: true
+      ui: 
+        enabled: true 
+        ingress: 
+          enabled: true
+          annotations: 
+            kubernetes.io/ingress.class: nginx 
+          hosts: 
+          - hubble-ui.192.168.110.9.nip.io
+    k8sServiceHost: cluster.bomar.bme.lab
+    k8sServicePort: 6443
+    ipam: 
+      mode: kubernetes
