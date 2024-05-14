@@ -7,4 +7,4 @@ resources:
       - aesgcm:
           keys: 
             - name: key1 
-              secret: YxZZjfUMRQ7/R1ivnoRBDoHTu1BgjgW2fawSPZnicVw=
+              secret: ${random_b64}
