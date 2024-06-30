@@ -1,10 +1,14 @@
+[Unit]
+Description=MinIO Object Storage for Container
+After=network.target syslog.target
+
 [Service]
 Type=simple
 TimeoutStartSec=5m
 ExecStartPre=-/usr/bin/podman rm "minio"
 
 ExecStart=/usr/bin/podman run --name minio \
-                              -p 9000:9000 \
+			      -p 9000:9000 \
                               -p 9001:9001 \
                               -v /shares/minio/data:/data:z \
                               -v /shares/minio/certs:/certs:z \

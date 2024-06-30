@@ -5,7 +5,8 @@ Description=Hauler Rancher %I Service
 Type=simple
 KillMode=process
 Environment="HOME=/shares/hauler"
-ExecStart=/usr/local/bin/hauler store -s rancher/rancher-store serve %i -c config.yml
+ExecStartPre=/bin/bash check-hauler-fileserver.sh
+ExecStart=/usr/local/bin/hauler store -s rke2/rke2-store serve %i
 WorkingDirectory=/shares/hauler
 ExecStop=/bin/kill -HUP $MAINPID
 

@@ -1,0 +1,14 @@
+[Unit]
+Description=Hauler RKE2 %I Service
+
+[Service]
+Type=simple
+KillMode=process
+Environment="HOME=/shares/hauler"
+ExecStartPre=/bin/bash check-hauler-registry.sh
+ExecStart=/usr/local/bin/hauler store -s rke2/rke2-store serve %i -c config.yml
+WorkingDirectory=/shares/hauler
+ExecStop=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target
