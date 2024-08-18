@@ -7,7 +7,7 @@ mv certgen-linux-amd64 /usr/local/bin/certgen
 chmod u+x /usr/local/bin/certgen 
 
 # Generate public cert and private key 
-certgen -host "localhost,minio.*.nip.io,hauler.bomar.bme.lab" 
+certgen -host "localhost,minio.*.nip.io,minio.bomar.bme.lab" 
 
 # Check the certificate 
 openssl x509 -in public.crt -noout -dates
